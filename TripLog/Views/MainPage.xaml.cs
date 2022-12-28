@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using TripLog.Models;
 using Xamarin.Forms;
 
@@ -41,6 +42,22 @@ namespace TripLog.Views
                 }
             };
             trips.ItemsSource = items;
+        }
+
+        void NewButton_Clicked(System.Object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new NewEntryPage());
+        }
+
+        async void Trips_SelectionChanged(object s, SelectionChangedEventArgs e)
+        {
+            var trip = (TripLogEntry)e.CurrentSelection.FirstOrDefault();
+            if (trip != null)
+            {
+                await Navigation.PushAsync(new DetailPage(trip));
+            }
+            // Clear selection 
+            trips.SelectedItem = null;
         }
     }
 }
