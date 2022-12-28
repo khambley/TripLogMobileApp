@@ -17,13 +17,17 @@
                 Opacity=".8" />
             <StackLayout Padding="10" Grid.Row="1">
                 <Label x:Name="title"
-                    HorizontalOptions="Center" />
+                    HorizontalOptions="Center"
+                    Text="{Binding Entry.Title}" />
                 <Label x:Name="date"
-                    HorizontalOptions="Center" />
+                    HorizontalOptions="Center"
+                    Text="{Binding Entry.Date, StringFormat='{0:M}'}" />
                 <Label x:Name="rating"
-                    HorizontalOptions="Center" />
+                    HorizontalOptions="Center"
+                    Text="{Binding Entry.Rating, StringFormat='{0} star rating'}" />
                 <Label x:Name="notes"
-                    HorizontalOptions="Center" />
+                    HorizontalOptions="Center"
+                    Text="{Binding Entry.Notes}" />
             </StackLayout>
         </Grid>
     </ContentPage.Content>
