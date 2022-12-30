@@ -13,7 +13,8 @@
                    BackgroundColor="White">
             <TableView.Root>
                 <TableSection>
-                    <EntryCell Label="Title"
+                    <EntryCell x:Name="title"
+                               Label="Title"
                                Text="{Binding Title}"/>
                     <EntryCell Label="Latitude"
                                Keyboard="Numeric"
@@ -23,7 +24,8 @@
                                Text="{Binding Longitude}" />
                     <EntryCell Label="Date"
                                Text="{Binding Date, StringFormat='{0:d}'}" />
-                    <EntryCell Label="Rating"
+                    <EntryCell x:Name="rating"
+                               Label="Rating"
                                Keyboard="Numeric"
                                Text="{Binding Rating}" />
                     <EntryCell Label="Notes" Text="{Binding Notes}" />
