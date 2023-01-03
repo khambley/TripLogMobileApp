@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TripLog.Models;
+using TripLog.Services;
 using TripLog.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
@@ -10,10 +11,10 @@ namespace TripLog.Views
     public partial class DetailPage : ContentPage
     {
         DetailViewModel ViewModel => BindingContext as DetailViewModel;
-        public DetailPage(TripLogEntry entry)
+        public DetailPage()
         {
             InitializeComponent();
-            BindingContext = new DetailViewModel(entry);
+            BindingContext = new DetailViewModel(DependencyService.Get<INavService>());
 
             map.MoveToRegion(MapSpan.FromCenterAndRadius(
                 new Position(
@@ -24,7 +25,7 @@ namespace TripLog.Views
             map.Pins.Add(new Pin
             {
                 Type = PinType.Place,
-                Label = entry.Title,
+                Label = ViewModel.Entry.Title,
                 Position = new Position(ViewModel.Entry.Latitude, ViewModel.Entry.Longitude)
             });
 
