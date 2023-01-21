@@ -103,6 +103,9 @@ namespace TripLog.Services
                                       .DeclaredConstructors
                                       .FirstOrDefault(dc => !dc.GetParameters().Any());
             var view = constructor.Invoke(null) as Page;
+            var vm = ((App)Application.Current).Kernel.GetService(viewModelType);
+
+            view.BindingContext = vm;
             await XamarinFormsNav.PushAsync(view, true);
         }
 
