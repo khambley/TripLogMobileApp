@@ -48,6 +48,7 @@ namespace TripLog.iOS.Renderers
             //Create iOS Picker
             var datePicker = new UIDatePicker
             {
+                PreferredDatePickerStyle = UIDatePickerStyle.Wheels,
                 Mode = mode,
                 BackgroundColor = UIColor.White,
                 Date = date,
