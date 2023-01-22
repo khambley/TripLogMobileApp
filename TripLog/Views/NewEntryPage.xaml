@@ -2,6 +2,7 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:TripLog.Controls;assembly=TripLog"
     x:Class="TripLog.Views.NewEntryPage"
     Title="New Entry">
     <ContentPage.ToolbarItems>
@@ -22,8 +23,8 @@
                     <EntryCell Label="Longitude"
                                Keyboard="Numeric"
                                Text="{Binding Longitude}" />
-                    <EntryCell Label="Date"
-                               Text="{Binding Date, StringFormat='{0:d}'}" />
+                    <controls:DatePickerEntryCell Label="Date"
+                                                  Date="{Binding Date, StringFormat='{0:d}'}" />
                     <EntryCell x:Name="rating"
                                Label="Rating"
                                Keyboard="Numeric"

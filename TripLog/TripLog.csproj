@@ -24,6 +24,7 @@
     <None Remove="Services\" />
     <None Remove="Portable.Ninject" />
     <None Remove="Modules\" />
+    <None Remove="Controls\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />
@@ -31,5 +32,6 @@
     <Folder Include="ViewModels\" />
     <Folder Include="Services\" />
     <Folder Include="Modules\" />
+    <Folder Include="Controls\" />
   </ItemGroup>
 </Project>
