@@ -25,6 +25,7 @@
     <None Remove="Portable.Ninject" />
     <None Remove="Modules\" />
     <None Remove="Controls\" />
+    <None Remove="Converters\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />
@@ -33,5 +34,6 @@
     <Folder Include="Services\" />
     <Folder Include="Modules\" />
     <Folder Include="Controls\" />
+    <Folder Include="Converters\" />
   </ItemGroup>
 </Project>
