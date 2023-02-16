@@ -20,8 +20,11 @@ namespace TripLog.ViewModels
             }
         }
 
-        public MainViewModel(INavService navService) : base(navService)
+        readonly ITripLogDataService _tripLogService;
+
+        public MainViewModel(INavService navService, ITripLogDataService tripLogService) : base(navService)
         {
+            _tripLogService = tripLogService;
             LogEntries = new ObservableCollection<TripLogEntry>();
         }
 
@@ -36,38 +39,24 @@ namespace TripLog.ViewModels
             LoadEntries();
         }
 
-        void LoadEntries()
+        async void LoadEntries()
         {
-            LogEntries.Clear();
+            if (IsBusy)
+                return;
 
-            LogEntries.Add(new TripLogEntry
+            IsBusy = true;
+
+            try
             {
-                Title = "Washington Monument",
-                Notes = "Amazing!",
-                Rating = 3,
-                Date = new DateTime(2019, 2, 5),
-                Latitude = 38.8895,
-                Longitude = -77.0352
-            });
-            LogEntries.Add(new TripLogEntry
+                var entries = await _tripLogService.GetEntriesAsync();
+                LogEntries = new ObservableCollection<TripLogEntry>(entries);
+            }
+            finally
             {
-                Title = "Statue of Liberty",
-                Notes = "Inspiring!",
-                Rating = 4,
-                Date = new DateTime(2019, 4, 13),
-                Latitude = 40.6892,
-                Longitude = -74.0444
-            });
-            LogEntries.Add(new TripLogEntry
-            {
-                Title = "Golden Gate Bridge",
-                Notes = "Foggy, but beautiful.",
-                Rating = 5,
-                Date = new DateTime(2019, 4, 26),
-                Latitude = 37.8268,
-                Longitude = -122.4798
-            });
+                IsBusy = false;
+            }
         }
+
     }
 }
 
