@@ -19,9 +19,14 @@ namespace TripLog.Modules
 
             // Core Services
             var tripLogService = new TripLogApiDataService(new Uri("https://mytriplogapi.azurewebsites.net"));
+
             Bind<ITripLogDataService>()
                 .ToMethod(x => tripLogService)
                 .InSingletonScope();
+
+            // Akavache
+            Bind<Akavache.IBlobCache>().ToConstant(Akavache.BlobCache.LocalMachine);
+
         }
     }
 }
